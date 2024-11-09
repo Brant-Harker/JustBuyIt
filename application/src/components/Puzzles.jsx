@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Box } from "@mui/material";
 import Puzzle1 from "./Puzzle1";
 import Puzzle2 from "./Puzzle2";
 
@@ -24,7 +25,7 @@ const Puzzles = () => {
   });
 
   return (
-    <>
+    <Box sx={{ width: "100vw" }}>
       {COMPONENTS.map(
         (Component, key) =>
           key == puzzleIndex && (
@@ -33,7 +34,7 @@ const Puzzles = () => {
             </span>
           )
       )}
-    </>
+    </Box>
   );
 };
 
