@@ -72,6 +72,7 @@ const MovingCheckbox = () => {
             position: "absolute",
             left: !isClicked ? `${position.left}px` : "30px",
             top: !isClicked ? `${position.top}px` : "125px",
+            transition: "left 0.1s, top 0.1s",
           }}
         />
         <Typography variant="h6" sx={{ marginLeft: "1.6em" }}>
