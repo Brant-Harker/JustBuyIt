@@ -1,8 +1,5 @@
 // popup.js
 
-//btn for changing pages (popup --> process)
-//change to reroute page later 
-console.log('popup.js loaded');
 document.addEventListener('DOMContentLoaded', () => {
     const processButton = document.getElementById('btn-process');
     if (processButton) {
@@ -10,12 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Process button clicked');
             window.location.href = 'process.html';
         });
-    }else{
+    } else {
         console.log('Button not found');
     }
+
+    // Automatically redirect to process.html after 10 seconds
+    setTimeout(() => {
+        window.location.href = 'process.html';
+    }, 10000);
 });
 
-// This function sends a message to the background script to request the price
+// Fetch and store the price locally when popup opens
 async function getPriceFromBackground() {
     return new Promise((resolve, reject) => {
         chrome.runtime.sendMessage({ action: 'getPrice' }, (response) => {
@@ -29,13 +31,12 @@ async function getPriceFromBackground() {
         });
     });
 }
-  
-  // Call the async function to get the price and update the popup's content
-  getPriceFromBackground()
+
+getPriceFromBackground()
     .then(price => {
-      console.log('Price received:', price);
-        // Update the h3 element with the class 'price' with the received price
+        console.log('Price received:', price);
+        chrome.storage.local.set({ price });
     })
     .catch(error => {
-      console.error('Error getting price:', error);
+        console.error('Error getting price:', error);
     });
