@@ -1,5 +1,5 @@
 const Puzzle2 = () => {
-  return <div>Puzzle2</div>;
+  return <h2>Puzzle2</h2>;
 };
 
 export default Puzzle2;
