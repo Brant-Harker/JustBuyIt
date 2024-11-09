@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Puzzle1 from "./Puzzle1";
 import Puzzle2 from "./Puzzle2";
 
@@ -15,9 +15,13 @@ const Puzzles = () => {
     }
   };
 
-  setInterval(() => {
-    updateIndex();
-  }, 10000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateIndex();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  });
 
   return (
     <>
