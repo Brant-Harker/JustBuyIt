@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Grid from "@mui/material/Grid2";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Header from "./components/Header";
 import Puzzles from "./components/Puzzles";
 import "./index.css";
@@ -8,6 +8,14 @@ import "./index.css";
 export default function App() {
   const [displayPuzzles, setDisplayPuzzles] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const flashlight = useRef(null);
+
+  const handleMousemove = ({ target }) => {
+    const flashlightHalfWidth = flashlight.offsetWidth / 2;
+
+    flashlight.style.left = target.pageX - flashlightHalfWidth + "px";
+    flashlight.style.top = target.pageY - flashlightHalfWidth + "px";
+  };
 
   return (
     <Grid
@@ -15,8 +23,10 @@ export default function App() {
         height: "100vh !important",
         width: "100vw !important",
         backgroundColor: isDarkMode && "Black",
+        position: "relative",
       }}
       container
+      onMouseMove={handleMousemove}
     >
       <Grid size={12} sx={{ minHeight: "3rem", maxHeight: "3rem" }}>
         <Header setIsDarkMode={setIsDarkMode} />
@@ -27,6 +37,7 @@ export default function App() {
       >
         {displayPuzzles && <Puzzles />}
       </Grid>
+      <Box id="flashlight" ref={flashlight} sx={{}}></Box>
       <Button
         variant="contained"
         sx={{
