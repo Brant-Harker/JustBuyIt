@@ -9,23 +9,34 @@ const MovingCheckbox = () => {
   const checkboxRef = useRef(null)
 
   useEffect(() => {
-    document.addEventListener("mousemove", handleMouseMove)
-
     const handleMouseMove = (event) => {
       if (!isClicked) {
         const mouseX = event.clientX
         const mouseY = event.clientY
         const rect = checkboxRef.current.getBoundingClientRect()
 
-        const checkboxCenter = rect.left + rect.width / 2
+        const checkboxX = rect.left + rect.width / 2
+        const checkboxY = rect.top + rect.height / 2
 
-        const differenceX = Math.abs(mouseX - checkboxCenter)
-        const differenceY = Math.abs(mouseY - checkboxCenter)
+        const differenceX = Math.abs(mouseX - checkboxX)
+        const differenceY = Math.abs(mouseY - checkboxY)
 
         const distance = Math.sqrt(differenceX ** 2 + differenceY ** 2)
+
+        if (distance < 30) {
+          const moveX = Math.random() * 32 - 16
+          const moveY = Math.random() * 32 - 16
+
+          let newLeft = position.left + moveX
+          let newTop = position.top + moveY
+
+          setPosition({ left: newLeft, top: newTop })
+        }
       }
     }
-  }, [isClicked, position])
+
+    document.addEventListener("mousemove", handleMouseMove)
+  }, [position, isClicked])
 
   return (
     <Container sx={{ marginTop: "4.5em", position: "relative" }}>
