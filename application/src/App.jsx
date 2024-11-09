@@ -1,7 +1,13 @@
+import { useState } from "react";
+import { Container } from "@mui/material";
+import Header from "./components/Header";
+
 export default function App() {
+  const [components, setComponents] = useState([]);
+
   return (
-    <div>
-      <h1 className="font-bold">Hello world!</h1>;
-    </div>
+    <Container maxWidth="md">
+      <Header />
+    </Container>
   );
 }
