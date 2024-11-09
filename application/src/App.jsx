@@ -6,15 +6,16 @@ import Puzzles from "./components/Puzzles";
 import "./index.css";
 
 export default function App() {
+  const [leftPos, setLeftPos] = useState("calc(50% - 2rem)");
+  const [topPos, setTopPos] = useState("calc(50% - 2rem)");
   const [displayPuzzles, setDisplayPuzzles] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const flashlight = useRef(null);
 
-  const handleMousemove = ({ target }) => {
-    const flashlightHalfWidth = flashlight.offsetWidth / 2;
-
-    flashlight.style.left = target.pageX - flashlightHalfWidth + "px";
-    flashlight.style.top = target.pageY - flashlightHalfWidth + "px";
+  const HALF_WIDTH = 32;
+  const handleMousemove = (e) => {
+    setLeftPos(e.clientX - HALF_WIDTH);
+    setTopPos(e.clientY - HALF_WIDTH);
   };
 
   return (
@@ -37,7 +38,14 @@ export default function App() {
       >
         {displayPuzzles && <Puzzles />}
       </Grid>
-      <Box id="flashlight" ref={flashlight} sx={{}}></Box>
+      <Box
+        id="flashlight"
+        ref={flashlight}
+        sx={{
+          left: `${leftPos}px`,
+          top: `${topPos}px`,
+        }}
+      ></Box>
       <Button
         variant="contained"
         sx={{
