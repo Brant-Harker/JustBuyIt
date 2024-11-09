@@ -5,7 +5,7 @@ import checkmark from "../assets/checkmark.png"
 
 const MovingCheckbox = () => {
   const [position, setPosition] = useState({ left: 30, top: 125 })
-  const [checked, setChecked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
   const checkboxRef = useRef(null)
 
   return (
@@ -36,7 +36,7 @@ const MovingCheckbox = () => {
         <Checkbox
           ref={checkboxRef}
           checked={checked}
-          onChange={() => setChecked(!checked)}
+          onChange={() => isClicked(true)}
           sx={{
             position: "absolute",
             left: `${position.left}px`,
