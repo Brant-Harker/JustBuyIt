@@ -1,30 +1,32 @@
-// background.js
+//background.js
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (changeInfo.status === 'complete' && /^https:\/\/www\.bestbuy\.ca\/en-ca\/product\//.test(tab.url)) {
-      // Start the 10-second timer
-      setTimeout(() => {
-        // Execute content script to get the price
-        chrome.scripting.executeScript({
-          target: { tabId: tabId },
-          func: function() {
-            const priceElement = document.querySelector('span[data-automation="product-price"]');
-            if (priceElement) {
-              const price = priceElement.querySelector('span');
-              return price ? price.textContent.trim() : 'Price not found';
+// Listen for messages from the popup and respond with the stored URL and price
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'getPrice') {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const tab = tabs[0];
+      
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: function() {
+          const priceElement = document.querySelector('span[data-automation="product-price"]');
+          if (priceElement) {
+            const price = priceElement.querySelector('span');
+            if (price && price.textContent) {
+              return price.textContent.trim();
             }
-            return 'Price not found';
           }
-        }, (result) => {
-          if (result && result[0] && result[0].result) {
-            // Store the price in chrome.storage to be accessed by process.js
-            chrome.storage.local.set({ price: result[0].result });
-            
-            // Open the process.html popup
-            chrome.action.setPopup({ popup: 'process.html' });
-          }
-        });
-      }, 10000); // 10 seconds
-    }
-  });
-  
+          return 'Price not found'; 
+        }
+      }, (result) => {
+    
+        if (result && result[0] && result[0].result) {
+          sendResponse({ price: result[0].result });
+        } else {
+          sendResponse({ price: 'Price not found' });
+        }
+      });
+    });
+    return true;
+  }
+});

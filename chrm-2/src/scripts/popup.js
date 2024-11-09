@@ -34,6 +34,7 @@ async function getPriceFromBackground() {
   getPriceFromBackground()
     .then(price => {
       console.log('Price received:', price);
+        // Update the h3 element with the class 'price' with the received price
     })
     .catch(error => {
       console.error('Error getting price:', error);
