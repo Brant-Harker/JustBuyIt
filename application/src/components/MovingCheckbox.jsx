@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Container, Card, Typography, Checkbox } from "@mui/material"
 import cloudflare_logo from "../assets/cloudflare_logo.png"
 import checkmark from "../assets/checkmark.png"
@@ -7,6 +7,25 @@ const MovingCheckbox = () => {
   const [position, setPosition] = useState({ left: 30, top: 125 })
   const [isClicked, setIsClicked] = useState(false)
   const checkboxRef = useRef(null)
+
+  useEffect(() => {
+    document.addEventListener("mousemove", handleMouseMove)
+
+    const handleMouseMove = (event) => {
+      if (!isClicked) {
+        const mouseX = event.clientX
+        const mouseY = event.clientY
+        const rect = checkboxRef.current.getBoundingClientRect()
+
+        const checkboxCenter = rect.left + rect.width / 2
+
+        const differenceX = Math.abs(mouseX - checkboxCenter)
+        const differenceY = Math.abs(mouseY - checkboxCenter)
+
+        const distance = Math.sqrt(differenceX ** 2 + differenceY ** 2)
+      }
+    }
+  }, [isClicked, position])
 
   return (
     <Container sx={{ marginTop: "4.5em", position: "relative" }}>
