@@ -1,20 +1,19 @@
 import { useState } from "react";
 import Grid from "@mui/material/Grid2";
-import { Button, Container } from "@mui/material";
+import { Button } from "@mui/material";
 import Header from "./components/Header";
 import Puzzles from "./components/Puzzles";
 import "./index.css";
 
 export default function App() {
   const [displayPuzzles, setDisplayPuzzles] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
     <Grid
-      maxWidth="md"
       sx={{
-        height: "100vh",
-        width: "100vw",
+        height: "100vh !important",
+        width: "100vw !important",
         backgroundColor: isDarkMode && "Black",
       }}
       container
