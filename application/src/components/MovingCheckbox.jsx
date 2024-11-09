@@ -30,7 +30,9 @@ const MovingCheckbox = () => {
           let newLeft = position.left + moveX
           let newTop = position.top + moveY
 
-          setPosition({ left: newLeft, top: newTop })
+          if (newTop > -30 && newTop < 200 && newLeft > -75 && newLeft < 200) {
+            setPosition({ left: newLeft, top: newTop })
+          }
         }
       }
     }
