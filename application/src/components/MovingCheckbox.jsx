@@ -65,12 +65,11 @@ const MovingCheckbox = () => {
       >
         <Checkbox
           ref={checkboxRef}
-          checked={checked}
-          onChange={() => isClicked(true)}
+          onChange={() => setIsClicked(true)}
           sx={{
             position: "absolute",
-            left: `${position.left}px`,
-            top: `${position.top}px`,
+            left: !isClicked ? `${position.left}px` : "30px",
+            top: !isClicked ? `${position.top}px` : "125px",
           }}
         />
         <Typography variant="h6" sx={{ marginLeft: "1.6em" }}>
