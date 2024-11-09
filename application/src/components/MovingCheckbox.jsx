@@ -4,12 +4,12 @@ import cloudflare_logo from "../assets/cloudflare_logo.png"
 import checkmark from "../assets/checkmark.png"
 
 const MovingCheckbox = () => {
-  const [position, setPosition] = useState()
+  const [position, setPosition] = useState({ left: 30, top: 125 })
   const [checked, setChecked] = useState(false)
   const checkboxRef = useRef(null)
 
   return (
-    <Container sx={{ marginTop: "4.5em" }}>
+    <Container sx={{ marginTop: "4.5em", position: "relative" }}>
       <div
         style={{ display: "flex", alignItems: "center", marginBottom: "0.6em" }}
       >
@@ -37,8 +37,15 @@ const MovingCheckbox = () => {
           ref={checkboxRef}
           checked={checked}
           onChange={() => setChecked(!checked)}
+          sx={{
+            position: "absolute",
+            left: `${position.left}px`,
+            top: `${position.top}px`,
+          }}
         />
-        <Typography variant="h6">Verify you are human</Typography>
+        <Typography variant="h6" sx={{ marginLeft: "1.6em" }}>
+          Verify you are human
+        </Typography>
         <img
           src={cloudflare_logo}
           alt="Logo"
