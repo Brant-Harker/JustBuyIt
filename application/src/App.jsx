@@ -1,13 +1,10 @@
-import "./App.css"
 import MovingCheckbox from "./components/MovingCheckbox.jsx"
 
 function App() {
   return (
-    <>
-      <div>
-        <MovingCheckbox />
-      </div>
-    </>
+    <div>
+      <MovingCheckbox />
+    </div>
   )
 }
 
