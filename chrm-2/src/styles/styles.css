@@ -1,0 +1,25 @@
+body{
+    width: 30rem;
+    height: 25rem;
+    padding: 2rem
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+
+#btn-process{
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    background-color: #a89be1;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+#btn-process:hover{
+    background-color: #7b6fbc;
+    cursor: pointer;
+
+}
