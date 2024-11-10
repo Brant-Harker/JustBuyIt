@@ -1,26 +1,41 @@
 // process.js
+// document.addEventListener('DOMContentLoaded', () => {
+//     chrome.storage.local.get(['price', 'productName', 'saleAmount'], (data) => {
+//         const price = data.price || 'Price not found';
+//         const priceElement = document.querySelector('#price');
+        
+//         if (priceElement) {
+//             priceElement.textContent = price;
+//         } else {
+//             console.error('Price element not found on process.html');
+//         }
+
+//         const productName = data.productName || 'Product name not found';
+//         const productNameElement = document.querySelector('#product-name');
+
+//         if (productNameElement) {
+//             productNameElement.textContent = productName;
+//         } else {
+//             console.error('Product name element not found on process.html');
+//         }
+
+//     });
+// });
 
 document.addEventListener('DOMContentLoaded', () => {
-    chrome.storage.local.get(['price', 'productName', 'saleAmount'], (data) => {
-        const price = data.price || 'Price not found';
-        const priceElement = document.querySelector('#price');
-        
-        if (priceElement) {
-            priceElement.textContent = price;
-        } else {
-            console.error('Price element not found on process.html');
-        }
+    const btnCancel = document.getElementById('btn-cancel');
+    if (btnCancel) {
+        btnCancel.addEventListener('click', () => {
+            console.log('Cancel button clicked!');
+            if (!btnCancel.classList.contains('disabled')) {
+                console.log('Button is not disabled, attempting to navigate.');
+                chrome.tabs.create({ url: 'https://just-buy-it-a.vercel.app/?vercelToolbarCode=4vPeji2229bCXKM' });        
+            }
+        });
+    } else {
+        console.error('Cancel button not found on process.html');
+    }
 
-        const productName = data.productName || 'Product name not found';
-        const productNameElement = document.querySelector('#product-name');
-
-        if (productNameElement) {
-            productNameElement.textContent = productName;
-        } else {
-            console.error('Product name element not found on process.html');
-        }
-
-    });
 });
 
 function startProgressBar() {

@@ -6,7 +6,7 @@
   "action": {
     "default_title": "Get pages source",
     "default_popup": "./src/popup.html",
-    "default_icon": "./icons/hello_extensions.png"
+    "default_icon": "./icons/shopping_cart.png"
   },
   "permissions": [
     "tabs",
