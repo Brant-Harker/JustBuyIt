@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 
-const CancelScreen = () => {
+const CancelScreen = ({ setDisplayPuzzles }) => {
   return (
     <div
       style={{
@@ -56,10 +56,10 @@ const CancelScreen = () => {
           />
         </CardContent>
         <CardActions sx={{ marginTop: "1rem", justifyContent: "space-around" }}>
-          <Button color="success" variant="contained" size="large">
+          <Button color="success" variant="contained" size="large" onClick={() => setDisplayPuzzles('Puzzles')}>
             cancel
           </Button>
-          <Button color="error" variant="contained" size="large">
+          <Button color="error" variant="contained" size="large" onClick={() => setDisplayPuzzles('Error')}>
             Yes, cancel it
           </Button>
         </CardActions>
