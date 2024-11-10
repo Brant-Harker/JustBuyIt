@@ -3,7 +3,7 @@ import { Container, Card, Typography, Checkbox } from "@mui/material"
 import cloudflare_logo from "../assets/cloudflare_logo.png"
 import checkmark from "../assets/checkmark.png"
 
-const MovingCheckbox = () => {
+const MovingCheckbox = ({setCompleted}) => {
   const [position, setPosition] = useState({ left: 30, top: 125 })
   const [isClicked, setIsClicked] = useState(false)
   const checkboxRef = useRef(null)
@@ -67,7 +67,10 @@ const MovingCheckbox = () => {
       >
         <Checkbox
           ref={checkboxRef}
-          onChange={() => setIsClicked(true)}
+          onChange={() => {
+            setIsClicked(true);
+            setCompleted(true);
+          }}
           sx={{
             position: "absolute",
             left: !isClicked ? `${position.left}px` : "30px",
