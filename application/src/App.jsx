@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import Header from "./components/Header";
 import Puzzles from "./components/Puzzles";
 import CancelScreen from "./components/CancelScreen";
-import Error from "./components/Error";
+import Error from "./components/Error/Error";
 import "./index.css";
 
 export default function App() {
