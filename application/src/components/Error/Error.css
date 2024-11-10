@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "SourGummy";
+  src: local("SourGummy-Black"), url("../../assets/fonts/SourGummy-Black.ttf");
+}
+
+@font-face {
+  font-family: "SourGummyThin";
+  src: local("SourGummy-Thin"), url("../../assets/fonts/SourGummy-Thin.ttf");
+}
