@@ -1,0 +1,62 @@
+.maze {
+  width: 90vw;
+  height: 60vh;
+  background-color: #dcdcdc;
+}
+
+.container {
+  display: flex;
+  overflow: auto;
+  outline: solid black;
+}
+
+.container-row {
+  flex-direction: row;
+  max-width: 100%;
+  min-height: 40vh;
+  max-height: 100%;
+}
+
+.container-column {
+  flex-direction: column;
+  max-height: 100%;
+  min-width: 30vw;
+  max-width: 100%;
+}
+
+.spacer-right {
+  margin-right: 150%;
+}
+
+.spacer-bottom {
+  margin-bottom: 300%;
+}
+
+.text {
+  color: black;
+  font-size: 700%;
+  white-space: nowrap;
+}
+
+.confirm {
+  max-height: 7vh;
+  min-width: 20vw;
+  margin-bottom: 3vh;
+  background-color: rgb(109, 210, 109);
+}
+
+.confirm-button-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 100%;
+  margin-right: 3vw;
+}
+
+.cancel {
+  min-height: 5vh;
+  max-width: 80%;
+  margin-top: 3vh;
+  margin-right: 10%;
+  margin-left: 10%;
+  background-color: rgb(199, 38, 38);
+}
