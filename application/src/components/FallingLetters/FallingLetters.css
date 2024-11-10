@@ -1,11 +1,8 @@
-body {
-  background-color: black;
-  font-family: "Courier New", Courier, monospace;
-}
-
 .main {
   max-height: 24rem;
   position: relative;
+  background-color: black;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .grid {

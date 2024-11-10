@@ -17,7 +17,7 @@ import lego from '../../assets/lego.avif';
 import xeno from '../../assets/xeno.jpg';
 import blockbuster from '../../assets/blockbuster.jpg';
 
-function ScrollMaze() {
+function ScrollMaze ( props ) {
 
   useEffect(() => {
     const middleCols = document.querySelectorAll('div.middle-col');
@@ -29,6 +29,10 @@ function ScrollMaze() {
       scroller.scrollTop = (scroller.scrollHeight - scroller.clientHeight) / 2;
     }
   }, []);
+
+  const onClick = () => {
+    props.setCompleted(true);
+  }
 
   return (
     <div className='maze'>
@@ -54,7 +58,7 @@ function ScrollMaze() {
             <img src={brilliant} style={{marginLeft: '7vw'}}/>
             <img src={blockbuster} style={{marginLeft: '30vw', marginRight: '30vw'}}/>
             <div id='7' className='container container-column middle-col'>
-              <button className='cancel'>Cancel!!!!</button>
+              <button className='cancel' onClick={onClick}>Cancel!!!!</button>
               <img src={bike} />
               <div className='spacer-bottom' style={{marginBottom: '75vh'}}/>
               <img src={lego} />
@@ -77,9 +81,8 @@ function ScrollMaze() {
         <div className='vertical-alignment'>
           <p className='text'>
             Last chance. Are you sure you want to cancel your purchase?
-            Think of the time you will save by just confirming your purchase.
             If you would like to continue with your purchase, select the confirm purchase button!
-            If you are sure you would like to cancel your purchase, please find the cancel button.
+            If you are sure you would like to cancel your purchase, find the cancel button.
           </p>
           <img src={meeting} style={{height: '40vh', width: '40vh', marginLeft: '30vw'}}/>
         </div>
