@@ -26,6 +26,9 @@ const FallingLetters = () => {
               id={letter.id}
               className="letter"
               onClick={(e) => letterClick(letter.text, e)}
+              style={{
+                animationDuration: "6s",
+              }}
             >
               {letter.text}
             </div>
