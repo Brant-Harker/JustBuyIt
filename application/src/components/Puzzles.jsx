@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, LinearProgress } from "@mui/material";
 import Puzzle1 from "./Puzzle1";
 import Puzzle2 from "./Puzzle2";
 import Puzzle3 from "./Puzzle3";
@@ -9,6 +9,7 @@ const COMPONENTS = [Puzzle1, Puzzle2, Puzzle3];
 const Puzzles = () => {
   const [puzzleIndex, setPuzzleIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
+  const [progress, setProgress] = useState(0);
 
 
   useEffect(() => {
@@ -19,27 +20,32 @@ const Puzzles = () => {
         setPuzzleIndex(0);
       }
     };
-    
-    if (completed) {
+
+    const timer = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress === 100) {
+          updateIndex();
+          return 0;
+        }
+        const diff = 0.5;
+        return Math.min(oldProgress + diff, 100);
+      });
+    }, 100);
+
+    if (completed || (progress >= 100)) {
       updateIndex();
       setCompleted(false);
+      setProgress(0);
     }
 
-    const timeout = setTimeout(() => {
-      updateIndex();
-    }, 50000);
-
-    if (completed) {
-      updateIndex();
-      setCompleted(false);
-      clearTimeout(timeout);
-    }
-
-
-  }, [completed, puzzleIndex]);
+    return () => {
+      clearInterval(timer);
+    };
+  });
 
   return (
     <Box sx={{ width: "100vw", height: "80vh" }}>
+      <LinearProgress variant="determinate" value={progress} />
       {COMPONENTS.map(
         (Component, key) => {
           return key == puzzleIndex && (
