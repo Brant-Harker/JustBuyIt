@@ -13,7 +13,6 @@ const FallingLetters = () => {
   }))
 
   const letterClick = (letter, e) => {
-    e.preventDefault()
     setClickedLetters((prev) => prev + letter)
   }
 
@@ -50,14 +49,22 @@ const FallingLetters = () => {
       </div>
       <div className="input-container">
         <input
+          className="input-text"
           type="text"
           placeholder="Type CANCEL to cancel"
           value={clickedLetters}
           onChange={(e) => setClickedLetters(e.target.value)}
         />
         <div>
-          <button onClick={() => setClickedLetters("")}>CLEAR</button>
-          <button onClick={handleSubmit}>SUBMIT</button>
+          <button
+            className="custom-button"
+            onClick={() => setClickedLetters("")}
+          >
+            CLEAR
+          </button>
+          <button className="custom-button" onClick={handleSubmit}>
+            SUBMIT
+          </button>
         </div>
       </div>
     </>
