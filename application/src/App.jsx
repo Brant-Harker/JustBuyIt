@@ -29,19 +29,22 @@ export default function App() {
       }}
       container
     >
-      <Grid
-        item
-        xs={12}
-        sx={{
-          height: "100vh",
-          width: "100vw",
-          position: "absolute",
-          backgroundColor: isDarkMode && "black",
-          mask: `radial-gradient(circle closest-side, transparent 100px, black 0)`,
-          maskPosition: `${leftPos}px ${topPos}px`,
-          zIndex: 0,
-        }}
-      />
+      {isDarkMode && (
+        <Grid
+          item
+          xs={12}
+          sx={{
+            height: "100vh",
+            width: "100vw",
+            position: "absolute",
+            backgroundColor: isDarkMode && "black",
+            mask: `radial-gradient(circle closest-side, transparent 100px, black 0)`,
+            maskPosition: `${leftPos}px ${topPos}px`,
+            cursor: "none",
+            zIndex: 0,
+          }}
+        />
+      )}
 
       <Grid size={12} sx={{ minHeight: "3rem", maxHeight: "3rem" }}>
         <Header setIsDarkMode={setIsDarkMode} />
