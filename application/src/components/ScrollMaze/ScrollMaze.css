@@ -25,16 +25,16 @@
 }
 
 .spacer-right {
-  margin-right: 150%;
+  margin-right: 150vw;
 }
 
 .spacer-bottom {
-  margin-bottom: 300%;
+  margin-bottom: 120vh;
 }
 
 .text {
   color: black;
-  font-size: 700%;
+  font-size: 300%;
   white-space: nowrap;
 }
 
@@ -45,7 +45,7 @@
   background-color: rgb(109, 210, 109);
 }
 
-.confirm-button-wrapper {
+.vertical-alignment {
   display: flex;
   flex-direction: column-reverse;
   min-height: 100%;
