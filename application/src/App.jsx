@@ -60,7 +60,7 @@ export default function App() {
           right: "3rem",
           bottom: "3rem",
         }}
-        onClick={() => setDisplayPuzzles(!displayPuzzles)}
+        onClick={() => setDisplayPuzzles(false)}
       >
         I am a robot :(
       </Button>
