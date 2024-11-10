@@ -25,17 +25,6 @@ const Puzzles = () => {
       setCompleted(false);
     }
 
-    const timeout = setTimeout(() => {
-      updateIndex();
-    }, 50000);
-
-    if (completed) {
-      updateIndex();
-      setCompleted(false);
-      clearTimeout(timeout);
-    }
-
-
   }, [completed, puzzleIndex]);
 
   return (
