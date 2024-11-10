@@ -1,17 +1,15 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid2";
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import Header from "./components/Header";
 import Puzzles from "./components/Puzzles";
 import "./index.css";
-import heroImage from "./assets/hero1.png";
 
 export default function App() {
-  const [leftPos, setLeftPos] = useState("calc(50% - 3rem)");
-  const [topPos, setTopPos] = useState("calc(50% - 3rem)");
+  const [leftPos, setLeftPos] = useState("0");
+  const [topPos, setTopPos] = useState("0");
   const [displayPuzzles, setDisplayPuzzles] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const flashlight = useRef(null);
 
   useEffect(() => {
     const handleMousemove = (e) => {
