@@ -2,36 +2,41 @@ import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Puzzle1 from "./Puzzle1";
 import Puzzle2 from "./Puzzle2";
+import Puzzle3 from "./Puzzle3";
 
-const COMPONENTS = [Puzzle1, Puzzle2];
+const COMPONENTS = [Puzzle1, Puzzle2, Puzzle3];
 
 const Puzzles = () => {
   const [puzzleIndex, setPuzzleIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
 
-  const updateIndex = () => {
-    if (puzzleIndex < COMPONENTS.length - 1) {
-      setPuzzleIndex(puzzleIndex + 1);
-    } else {
-      setPuzzleIndex(0);
-    }
-  };
 
   useEffect(() => {
+    const updateIndex = () => {
+      if (puzzleIndex < COMPONENTS.length - 1) {
+        setPuzzleIndex(puzzleIndex + 1);
+      } else {
+        setPuzzleIndex(0);
+      }
+    };
+    
     if (completed) {
       updateIndex();
       setCompleted(false);
-      // return () => clearInterval(interval);
     }
 
-    
-    
-    // const interval = setInterval(() => {
-    //   updateIndex();
-    // }, 5000);
+    const timeout = setTimeout(() => {
+      updateIndex();
+    }, 50000);
 
-    // return () => clearInterval(interval);
-  });
+    if (completed) {
+      updateIndex();
+      setCompleted(false);
+      clearTimeout(timeout);
+    }
+
+
+  }, [completed, puzzleIndex]);
 
   return (
     <Box sx={{ width: "100vw" }}>
