@@ -1,5 +1,4 @@
 // process.js
-
 // document.addEventListener('DOMContentLoaded', () => {
 //     chrome.storage.local.get(['price', 'productName', 'saleAmount'], (data) => {
 //         const price = data.price || 'Price not found';
@@ -36,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('Cancel button not found on process.html');
     }
+
 });
 
 function startProgressBar() {
