@@ -25,6 +25,9 @@ const FallingLetters = () => {
     }
   }
 
+  const getRandomDuration = () => `${Math.random() * 3 + 3}s`
+  const getRandomDelay = () => `${Math.random() * 2}s`
+
   return (
     <>
       <div className="main">
@@ -36,7 +39,8 @@ const FallingLetters = () => {
               className="letter"
               onClick={(e) => letterClick(letter.text, e)}
               style={{
-                animationDuration: "6s",
+                animationDuration: getRandomDuration(),
+                animationDelay: getRandomDelay(),
               }}
             >
               {letter.text}
