@@ -1,8 +1,8 @@
 // process.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    chrome.storage.local.get(['price', 'productName'], (data) => {
-        const price = data.price || 'Price not found (process.js)' + JSON.stringify(data);
+    chrome.storage.local.get(['price', 'productName', 'saleAmount'], (data) => {
+        const price = data.price || 'Price not found';
         const priceElement = document.querySelector('#price');
         
         if (priceElement) {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Price element not found on process.html');
         }
 
-        const productName = data.productName || 'Product name not found (process.js)' + JSON.stringify(data);
+        const productName = data.productName || 'Product name not found';
         const productNameElement = document.querySelector('#product-name');
 
         if (productNameElement) {

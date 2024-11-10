@@ -3,27 +3,29 @@
 console.log('content-script.js loaded');
 
 function getPrice() {
-    const priceElement = document.querySelector('div.style-module_price__ql4Q1');
+    const priceElement = document.querySelector('span[data-automation="product-price"]');
+    console.log('works!');
     
     if (priceElement) {
-      const price = priceElement.querySelector('div');
+      const price = priceElement.querySelector('span');
       
       if (price && price.textContent) {
         return price.textContent.trim(); 
       }
     }
     
-    return 'Price not found (content-script.js)'; 
+    return 'Price not found'; 
   }
 
   function getProductName() {
     const nameElement = document.querySelector('h1.text-body-lg');
+    console.log(nameElement);
     
     if (nameElement) {
       return nameElement.textContent.trim();
     }
     
-    return 'Product name not found (content-script.js)'; 
+    return 'Product name not found'; 
   }
 
   function getSaleAmount() {
@@ -44,8 +46,12 @@ function getPrice() {
       sendResponse({ price });
     }
     if (message.action === 'getProductName') {
-        const productName = getProductName();
+        const productName = getproductName();
         sendResponse({ productName });
+    }
+    if (message.action === 'getSaleAmount') {
+        const saleAmount = getSaleAmount();
+        sendResponse({ saleAmount });
     }
   });
 

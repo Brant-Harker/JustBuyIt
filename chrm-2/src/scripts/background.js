@@ -38,12 +38,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   };
 
   if (message.action === 'getPrice') {
-    handleRequest(message.action, 'div.style-module_price__ql4Q1 div', 'Price not found (background.js)', 'price');
+    handleRequest(message.action, 'span[data-automation="product-price"] span', 'Price not found', 'price');
     return true;
   }
 
   if (message.action === 'getProductName') {
-    handleRequest(message.action, 'h1.text-body-lg', 'Product name not found (background.js)', 'productName');
+    handleRequest(message.action, 'h1.text-body-lg', 'Product name not found', 'productName');
+    return true;
+  }
+
+  if (message.action === 'getSaleAmount') {
+    handleRequest(message.action, 'span[data-automation="product-saving"]', 'Sale amount not found', 'saleAmount');
     return true;
   }
 });

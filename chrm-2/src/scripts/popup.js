@@ -26,7 +26,7 @@ async function getPriceFromBackground() {
             } else if (response && response.price) {
                 resolve(response.price);
             } else {
-                reject('Price not found (pupup.js): ' + JSON.stringify(response));
+                reject('Price not found');
             }
         });
     });
@@ -51,7 +51,7 @@ async function getProductNameFromBackground() {
                 } else if (response && response.price) {
                     resolve(response.price);
                 } else {
-                    reject('Product name not found (popup.js): ' + JSON.stringify(response));
+                    reject('Product name not found');
                 }
             });
         });
@@ -66,3 +66,27 @@ async function getProductNameFromBackground() {
             console.error('Error getting productName:', error);
         });
 
+//get sale amount
+
+async function getSaleAmountFromBackground() {
+    return new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage({ action: 'getSaleAmount' }, (response) => {
+            if (chrome.runtime.lastError) {
+                reject('Error receiving message: ' + chrome.runtime.lastError.message);
+            } else if (response && response.price) {
+                resolve(response.price);
+            } else {
+                reject('Sale amount not found');
+            }
+        });
+    });
+}
+
+getSaleAmountFromBackground()
+    .then(saleAmount => {
+        console.log('Sale amount received:', saleAmount);
+        chrome.storage.local.set({ saleAmount });
+    })
+    .catch(error => {
+        console.error('Error getting saleAmount:', error);
+    });
