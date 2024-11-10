@@ -7,6 +7,7 @@ const COMPONENTS = [Puzzle1, Puzzle2];
 
 const Puzzles = () => {
   const [puzzleIndex, setPuzzleIndex] = useState(0);
+  const [completed, setCompleted] = useState(false);
 
   const updateIndex = () => {
     if (puzzleIndex < COMPONENTS.length - 1) {
@@ -17,22 +18,32 @@ const Puzzles = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (completed) {
       updateIndex();
-    }, 10000);
+      setCompleted(false);
+      // return () => clearInterval(interval);
+    }
 
-    return () => clearInterval(interval);
+    
+    
+    // const interval = setInterval(() => {
+    //   updateIndex();
+    // }, 5000);
+
+    // return () => clearInterval(interval);
   });
 
   return (
     <Box sx={{ width: "100vw" }}>
       {COMPONENTS.map(
-        (Component, key) =>
-          key == puzzleIndex && (
+        (Component, key) => {
+          return key == puzzleIndex && (
             <span key={key}>
-              <Component key={key} />
+              <Component key={key} setCompleted={setCompleted} />
             </span>
           )
+
+        }
       )}
     </Box>
   );

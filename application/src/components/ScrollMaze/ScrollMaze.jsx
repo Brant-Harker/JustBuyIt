@@ -17,7 +17,7 @@ import lego from '../../assets/lego.avif';
 import xeno from '../../assets/xeno.jpg';
 import blockbuster from '../../assets/blockbuster.jpg';
 
-function ScrollMaze() {
+function ScrollMaze ( props ) {
 
   useEffect(() => {
     const middleCols = document.querySelectorAll('div.middle-col');
@@ -29,6 +29,10 @@ function ScrollMaze() {
       scroller.scrollTop = (scroller.scrollHeight - scroller.clientHeight) / 2;
     }
   }, []);
+
+  const onClick = () => {
+    props.setCompleted(true);
+  }
 
   return (
     <div className='maze'>
@@ -89,7 +93,7 @@ function ScrollMaze() {
         <div className='spacer-right'/>
 
         <div className='vertical-alignment'>
-          <button className='confirm'>Confirm Purchase!</button>
+          <button className='confirm' onClick={onClick}>Confirm Purchase!</button>
           <img src={onlineShopping}/>
         </div>
 
