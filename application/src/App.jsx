@@ -61,7 +61,7 @@ export default function App() {
         }}
         onClick={() => setDisplayPuzzles(!displayPuzzles)}
       >
-        :(
+        I am a robot :(
       </Button>
     </Grid>
   );
