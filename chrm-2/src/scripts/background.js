@@ -1,44 +1,54 @@
 // background.js
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'getPrice') {
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        const tab = tabs[0];
-        
-        // Check if the URL matches the desired pattern
-        const urlPattern = /^https:\/\/www\.bestbuy\.ca\/en-ca\/product\/.*/;
-        if (urlPattern.test(tab.url)) {
-          
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: function() {
-              const priceElement = document.querySelector('span[data-automation="product-price"]');
-              if (priceElement) {
-                const price = priceElement.querySelector('span');
-                if (price && price.textContent) {
-                  return price.textContent.trim();
-                }
-              }
-              return 'Price not found'; 
-            }
-          }, (result) => {
-            if (result && result[0] && result[0].result) {
-              const price = result[0].result;
-              // Store the price in local storage
-              chrome.storage.local.set({ price: price }, () => {
-                sendResponse({ price });
-              });
-            } else {
-              sendResponse({ price: 'Price not found' });
-            }
-          });
-  
-        } else {
-          console.log('The URL does not match the Best Buy product page pattern.');
-          sendResponse({ price: 'Not a valid product page' });
-        }
-      });
-      return true;
-    }
-  });
-  
+  const urlPattern = /^https:\/\/www\.bestbuy\.ca\/en-ca\/product\/.*/;
+
+  const executeScript = (tabId, func, callback) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      func: func
+    }, callback);
+  };
+
+  const handleRequest = (messageAction, querySelector, notFoundMessage, storageKey) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const tab = tabs[0];
+      if (urlPattern.test(tab.url)) {
+        executeScript(tab.id, function() {
+          const element = document.querySelector(querySelector);
+          if (element) {
+            return element.textContent.trim();
+          }
+          return notFoundMessage;
+        }, (result) => {
+          if (result && result[0] && result[0].result) {
+            const value = result[0].result;
+            chrome.storage.local.set({ [storageKey]: value }, () => {
+              sendResponse({ [storageKey]: value });
+            });
+          } else {
+            sendResponse({ [storageKey]: notFoundMessage });
+          }
+        });
+      } else {
+        console.log('The URL does not match the Best Buy product page pattern.');
+        sendResponse({ [storageKey]: 'Not a valid product page' });
+      }
+    });
+  };
+
+  if (message.action === 'getPrice') {
+    handleRequest(message.action, 'span[data-automation="product-price"] span', 'Price not found', 'price');
+    return true;
+  }
+
+  if (message.action === 'getProductName') {
+    handleRequest(message.action, 'h1.text-body-lg', 'Product name not found', 'productName');
+    return true;
+  }
+
+  if (message.action === 'getSaleAmount') {
+    handleRequest(message.action, 'span[data-automation="product-saving"]', 'Sale amount not found', 'saleAmount');
+    return true;
+  }
+});
