@@ -95,4 +95,4 @@ const MovingCheckbox = ({setCompleted}) => {
   )
 }
 
-export default MovingCheckbox
+export default MovingCheckbox;
