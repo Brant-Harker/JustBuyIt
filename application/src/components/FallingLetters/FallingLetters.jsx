@@ -4,8 +4,8 @@ import "./FallingLetters.css"
 const FallingLetters = () => {
   const [clickedLetters, setClickedLetters] = useState("")
 
-  const baseLetters = "CANCELcancel"
-  const repeatLetters = baseLetters.repeat(32)
+  const baseLetters = "CaNcElcAnCeL"
+  const repeatLetters = baseLetters.repeat(27)
 
   const letters = [...repeatLetters].map((letter, i) => ({
     id: `${i}`,
@@ -16,6 +16,15 @@ const FallingLetters = () => {
     e.preventDefault()
     setClickedLetters((prev) => prev + letter)
   }
+
+  const handleSubmit = () => {
+    if (clickedLetters === "CANCEL") {
+      alert("Success!")
+    } else {
+      alert("Typed text does not match 'CANCEL'")
+    }
+  }
+
   return (
     <>
       <div className="main">
@@ -40,10 +49,11 @@ const FallingLetters = () => {
           type="text"
           placeholder="Type CANCEL to cancel"
           value={clickedLetters}
+          onChange={(e) => setClickedLetters(e.target.value)}
         />
         <div>
           <button onClick={() => setClickedLetters("")}>CLEAR</button>
-          <button>SUBMIT</button>
+          <button onClick={handleSubmit}>SUBMIT</button>
         </div>
       </div>
     </>
