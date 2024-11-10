@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import "./Error.css";
 
 const Error = () => {
   return (
@@ -13,12 +14,15 @@ const Error = () => {
       <Typography variant="h1" component="p">
         ;)
       </Typography>
-      <Typography variant="h4" component="h2" sx={{ paddingTop: "2rem" }}>
-        Something went wrong, please refresh the website and redo the puzzles to
-        fix the problem.
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{ paddingY: "2rem", fontFamily: "SourGummyThin" }}
+      >
+        Something went wrong, please redo the puzzles to fix the problem.
       </Typography>
-      <Typography variant="h3" component="p">
-
+      <Typography variant="h5" component="p" sx={{ fontFamily: "SourGummy" }}>
+        Enjoy your purchase!
       </Typography>
     </Box>
   );
