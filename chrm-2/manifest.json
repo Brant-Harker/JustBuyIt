@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Just Buy It! Extension",
+  "description": "An extension for helping you buy things that you're too indecisive to buy.",
+  "version": "1.0",
+  "action": {
+    "default_title": "Get pages source",
+    "default_popup": "./src/popup.html",
+    "default_icon": "./icons/hello_extensions.png"
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "./src/scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["./src/scripts/content-script.js"],
+      "matches": [
+        "https://www.bestbuy.ca/en-ca/product/*",
+        "<all_urls>"
+      ]
+    }
+  ]
+}
