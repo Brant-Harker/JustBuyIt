@@ -13,14 +13,12 @@ export default function App() {
   const [displayPuzzles, setDisplayPuzzles] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useEffect(() => {
-    const handleMousemove = (e) => {
+  const handleMousemove = (e) => {
+    if (isDarkMode) {
       setLeftPos(e.clientX);
       setTopPos(e.clientY);
-    };
-
-    document.addEventListener("mousemove", handleMousemove);
-  }, []);
+    }
+  };
 
   return (
     <Grid
@@ -30,6 +28,7 @@ export default function App() {
         position: "relative",
       }}
       container
+      onMouseMove={handleMousemove}
     >
       {isDarkMode && (
         <Grid
