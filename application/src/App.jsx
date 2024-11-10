@@ -42,7 +42,7 @@ export default function App() {
             mask: `radial-gradient(circle closest-side, transparent 80px, black 0)`,
             maskPosition: `${leftPos}px ${topPos}px`,
             cursor: "none",
-            zIndex: 0,
+            zIndex: 999,
           }}
         />
       )}
