@@ -20,11 +20,6 @@ export default function DarkModeToggle({ setIsDarkMode }) {
     <FormGroup>
       <FormControlLabel
         control={<Switch checked={clicked} onChange={handleChange} />}
-        sx={{
-          position: clicked ? "fixed" : "static",
-          bottom: "3rem",
-          left: "10%",
-        }}
         label={clicked ? "Dark Mode" : "Light Mode"}
       />
     </FormGroup>
