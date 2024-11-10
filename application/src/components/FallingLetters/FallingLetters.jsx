@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./FallingLetters.css"
 
 const FallingLetters = () => {
-  const [clickedLetter, setClickedLetter] = useState("")
+  const [clickedLetters, setClickedLetters] = useState("")
   const letters = [
     { id: "1", text: "N" },
     { id: "2", text: "E" },
@@ -20,7 +20,7 @@ const FallingLetters = () => {
 
   const letterClick = (letter, e) => {
     e.preventDefault()
-    setClickedLetter(letter)
+    setClickedLetters((prev) => prev + letter)
   }
   return (
     <>
@@ -35,6 +35,17 @@ const FallingLetters = () => {
             {letter.text}
           </div>
         ))}
+      </div>
+      <div className="input-container">
+        <input
+          type="text"
+          placeholder="Type CANCEL to cancel"
+          value={clickedLetters}
+        />
+        <div>
+          <button onClick={() => setClickedLetters("")}>CLEAR</button>
+          <button>SUBMIT</button>
+        </div>
       </div>
     </>
   )
