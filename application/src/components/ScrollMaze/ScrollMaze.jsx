@@ -81,9 +81,8 @@ function ScrollMaze ( props ) {
         <div className='vertical-alignment'>
           <p className='text'>
             Last chance. Are you sure you want to cancel your purchase?
-            Think of the time you will save by just confirming your purchase.
             If you would like to continue with your purchase, select the confirm purchase button!
-            If you are sure you would like to cancel your purchase, please find the cancel button.
+            If you are sure you would like to cancel your purchase, find the cancel button.
           </p>
           <img src={meeting} style={{height: '40vh', width: '40vh', marginLeft: '30vw'}}/>
         </div>

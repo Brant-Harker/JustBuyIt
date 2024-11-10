@@ -28,7 +28,7 @@ const Puzzles = () => {
   }, [completed, puzzleIndex]);
 
   return (
-    <Box sx={{ width: "100vw", height: "80vh" }}>
+    <Box sx={{ width: "100vw", height: "80vh", marginTop: '10vh' }}>
       {COMPONENTS.map(
         (Component, key) => {
           return key == puzzleIndex && (
