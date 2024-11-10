@@ -46,7 +46,7 @@ export default function App() {
       <Grid size={12} sx={{ minHeight: "3rem", maxHeight: "3rem" }}>
         <Header setIsDarkMode={setIsDarkMode} />
       </Grid>
-      <Grid size={12} sx={{ height: "calc(100vh - 3rem)", zIndex: 1 }}>
+      <Grid size={12} sx={{ height: "calc(100vh - 3rem)" }}>
         {displayPuzzles && <Puzzles />}
       </Grid>
       <Button
