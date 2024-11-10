@@ -18,17 +18,19 @@ const FallingLetters = () => {
   }
   return (
     <>
-      <div className="grid">
-        {letters.map((letter, index) => (
-          <div
-            key={index}
-            id={letter.id}
-            className="letter"
-            onClick={(e) => letterClick(letter.text, e)}
-          >
-            {letter.text}
-          </div>
-        ))}
+      <div className="main">
+        <div className="grid">
+          {letters.map((letter, index) => (
+            <div
+              key={index}
+              id={letter.id}
+              className="letter"
+              onClick={(e) => letterClick(letter.text, e)}
+            >
+              {letter.text}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="input-container">
         <input
