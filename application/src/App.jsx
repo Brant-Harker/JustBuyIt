@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid2";
 import { Button } from "@mui/material";
 import Header from "./components/Header";
 import Puzzles from "./components/Puzzles";
+import CancelScreen from "./components/CancelScreen";
 import "./index.css";
 
 export default function App() {
@@ -50,7 +51,7 @@ export default function App() {
         <Header setIsDarkMode={setIsDarkMode} />
       </Grid>
       <Grid size={12} sx={{ height: "calc(100vh - 3rem)" }}>
-        {displayPuzzles && <Puzzles />}
+        {displayPuzzles ? <Puzzles /> : <CancelScreen />}
       </Grid>
       <Button
         variant="contained"
