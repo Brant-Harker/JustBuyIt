@@ -58,7 +58,7 @@ function ScrollMaze ( props ) {
             <img src={brilliant} style={{marginLeft: '7vw'}}/>
             <img src={blockbuster} style={{marginLeft: '30vw', marginRight: '30vw'}}/>
             <div id='7' className='container container-column middle-col'>
-              <button className='cancel'>Cancel!!!!</button>
+              <button className='cancel' onClick={onClick}>Cancel!!!!</button>
               <img src={bike} />
               <div className='spacer-bottom' style={{marginBottom: '75vh'}}/>
               <img src={lego} />
@@ -92,7 +92,7 @@ function ScrollMaze ( props ) {
         <div className='spacer-right'/>
 
         <div className='vertical-alignment'>
-          <button className='confirm' onClick={onClick}>Confirm Purchase!</button>
+          <button className='confirm'>Confirm Purchase!</button>
           <img src={onlineShopping}/>
         </div>
 
