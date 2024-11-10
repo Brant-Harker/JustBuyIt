@@ -32,48 +32,26 @@ export default function App() {
       sx={{
         height: "100vh",
         width: "100vw",
+        position: "relative",
       }}
       container
     >
+      <Grid
+        item
+        xs={12}
+        sx={{
+          height: "100vh",
+          width: "100vw",
+          position: "absolute",
+          backgroundColor: isDarkMode && "black",
+          zIndex: 0,
+        }}
+      />
+
       <Grid size={12} sx={{ minHeight: "3rem", maxHeight: "3rem" }}>
         <Header setIsDarkMode={setIsDarkMode} />
       </Grid>
-      <Grid size={12}>
-        {isDarkMode && (
-          <Box
-            sx={{
-              height: "calc(100vh - 3rem)",
-              width: "100vw",
-              padding: "1rem",
-              backgroundImage: `linear-gradient(#000, #000), url(${heroImage})`,
-              backgroundRepeat: isDarkMode && "no-repeat",
-              backgroundSize: isDarkMode && "100% 100%",
-              backgroundAttachment: isDarkMode && "fixed",
-              backgroundPosition: isDarkMode && "center",
-              position: "relative",
-              cursor: "none",
-            }}
-          >
-            <Box
-              id="flashlight"
-              ref={flashlight}
-              sx={{
-                left: `${leftPos}px`,
-                top: `${topPos}px`,
-                position: "absolute",
-                width: "6rem",
-                height: "6rem",
-                zIndex: 1,
-                backgroundImage: `url(${heroImage})`,
-                backgroundSize: "100% 100%",
-                backgroundPosition: "center",
-                backgroundAttachment: "fixed",
-                borderRadius: "50%",
-                boxShadow: "0 0 5rem 1rem rgb(215, 195, 9)",
-              }}
-            />
-          </Box>
-        )}
+      <Grid size={12} sx={{ height: "calc(100vh - 3rem)", zIndex: 1 }}>
         {displayPuzzles && <Puzzles />}
       </Grid>
       <Button
