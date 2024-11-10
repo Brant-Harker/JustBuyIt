@@ -13,15 +13,10 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const flashlight = useRef(null);
 
-  const OFFSET_Y = 96;
-  const OFFSET_X = 56;
   useEffect(() => {
     const handleMousemove = (e) => {
-      const newLeftPos = e.clientX - OFFSET_X;
-      const newTopPos = e.clientY - OFFSET_Y;
-
-      setLeftPos(newLeftPos);
-      setTopPos(newTopPos);
+      setLeftPos(e.clientX);
+      setTopPos(e.clientY);
     };
 
     document.addEventListener("mousemove", handleMousemove);
@@ -44,6 +39,9 @@ export default function App() {
           width: "100vw",
           position: "absolute",
           backgroundColor: isDarkMode && "black",
+          mask: `radial-gradient(circle closest-side, transparent 96px, black 0)`,
+          maskPosition: `${leftPos}px ${topPos}px`,
+          transform: "-50%, -50%",
           zIndex: 0,
         }}
       />
