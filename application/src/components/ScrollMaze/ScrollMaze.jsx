@@ -66,7 +66,7 @@ function ScrollMaze ( props ) {
               <img src={fantasy}/>
             </div>
             <div className='vertical-alignment' style={{marginLeft: '50vw'}}>
-              <button className='confirm'>Confirm Purchase!</button>
+              <button className='confirm' onClick={() => props.setDisplayPuzzles('Error')}>Confirm Purchase!</button>
               <img src={celebrate}/>
             </div>
           </div>
@@ -92,7 +92,7 @@ function ScrollMaze ( props ) {
         <div className='spacer-right'/>
 
         <div className='vertical-alignment'>
-          <button className='confirm'>Confirm Purchase!</button>
+          <button className='confirm' onClick={() => props.setDisplayPuzzles('Error')}>Confirm Purchase!</button>
           <img src={onlineShopping}/>
         </div>
 
