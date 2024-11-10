@@ -10,7 +10,7 @@ import "./index.css";
 export default function App() {
   const [leftPos, setLeftPos] = useState("0");
   const [topPos, setTopPos] = useState("0");
-  const [displayPuzzles, setDisplayPuzzles] = useState(true);
+  const [displayPuzzles, setDisplayPuzzles] = useState('Puzzles');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -52,7 +52,8 @@ export default function App() {
         <Header setIsDarkMode={setIsDarkMode} />
       </Grid>
       <Grid size={12} sx={{ height: "calc(100vh - 3rem)" }}>
-        {displayPuzzles ? <Puzzles /> : <Error />}
+        {displayPuzzles === 'Puzzles' ? <Puzzles setDisplayPuzzles={setDisplayPuzzles} /> : 
+         displayPuzzles === 'Cancel' ? <CancelScreen setDisplayPuzzles={setDisplayPuzzles} /> : <Error />}
       </Grid>
       <Button
         variant="contained"
@@ -61,7 +62,7 @@ export default function App() {
           right: "3rem",
           bottom: "3rem",
         }}
-        onClick={() => setDisplayPuzzles(false)}
+        onClick={() => setDisplayPuzzles('Cancel')}
       >
         I am a robot :(
       </Button>

@@ -6,7 +6,7 @@ import Puzzle3 from "./Puzzle3";
 
 const COMPONENTS = [Puzzle1, Puzzle2, Puzzle3];
 
-const Puzzles = () => {
+const Puzzles = ({ setDisplayPuzzles }) => {
   const [puzzleIndex, setPuzzleIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
 
@@ -17,6 +17,7 @@ const Puzzles = () => {
         setPuzzleIndex(puzzleIndex + 1);
       } else {
         setPuzzleIndex(0);
+        setDisplayPuzzles('Cancel');
       }
     };
     
@@ -33,7 +34,7 @@ const Puzzles = () => {
         (Component, key) => {
           return key == puzzleIndex && (
             <span key={key}>
-              <Component key={key} setCompleted={setCompleted} />
+              <Component key={key} setCompleted={setCompleted} setDisplayPuzzles={setDisplayPuzzles} />
             </span>
           )
 
