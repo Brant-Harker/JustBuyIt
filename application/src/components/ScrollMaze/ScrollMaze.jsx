@@ -13,6 +13,9 @@ import fantasy from '../../assets/fantasy.png';
 import brilliant from '../../assets/brilliant.png';
 import frosty from '../../assets/Frosty.jpg';
 import bike from '../../assets/bike.png';
+import lego from '../../assets/lego.avif';
+import xeno from '../../assets/xeno.jpg';
+import blockbuster from '../../assets/blockbuster.jpg';
 
 function ScrollMaze() {
 
@@ -42,18 +45,20 @@ function ScrollMaze() {
             <div className='spacer-right'></div>
             <div id='4' className='container container-column middle-col'>
               <img src={cruise}/>
-              <div className='spacer-bottom'/>
+              <img src={xeno} style={{marginTop: '50vh', marginBottom: '50vh'}}/>
               <img src={singles}/>
             </div>
           </div>
 
           <div id='6' className='container container-row'>
             <img src={brilliant} style={{marginLeft: '7vw'}}/>
-            <div className='spacer-right'/>
+            <img src={blockbuster} style={{marginLeft: '30vw', marginRight: '30vw'}}/>
             <div id='7' className='container container-column middle-col'>
               <button className='cancel'>Cancel!!!!</button>
               <img src={bike} />
-              <div className='spacer-bottom'/>
+              <div className='spacer-bottom' style={{marginBottom: '75vh'}}/>
+              <img src={lego} />
+              <div className='spacer-bottom' style={{marginBottom: '75vh'}}/>
               <img src={fantasy}/>
             </div>
             <div className='vertical-alignment' style={{marginLeft: '50vw'}}>
@@ -74,7 +79,7 @@ function ScrollMaze() {
             Last chance. Are you sure you want to cancel your purchase?
             Think of the time you will save by just confirming your purchase.
             If you would like to continue with your purchase, select the confirm purchase button!
-            If you are sure you would like to cancel your purchase, please select the cancel button.
+            If you are sure you would like to cancel your purchase, please find the cancel button.
           </p>
           <img src={meeting} style={{height: '40vh', width: '40vh', marginLeft: '30vw'}}/>
         </div>
