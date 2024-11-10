@@ -5,7 +5,7 @@ const Puzzle3 = ({ setCompleted }) => {
     return (
       <>
         <h1>Puzzle3</h1>
-        <FallingLetters/>
+        <FallingLetters setCompleted={setCompleted}/>
       </>
     ) 
   };

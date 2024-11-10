@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./FallingLetters.css"
 
-const FallingLetters = () => {
+const FallingLetters = ({ setCompleted }) => {
   const [clickedLetters, setClickedLetters] = useState("")
 
   const baseLetters = "CaNcElcAnCeL"
@@ -18,7 +18,7 @@ const FallingLetters = () => {
 
   const handleSubmit = () => {
     if (clickedLetters === "CANCEL") {
-      alert("Success!")
+      setCompleted(true);
     } else {
       alert("Typed text does not match 'CANCEL'")
     }
