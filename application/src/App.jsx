@@ -13,11 +13,12 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const flashlight = useRef(null);
 
-  const HALF_WIDTH = 48;
+  const OFFSET_Y = 96;
+  const OFFSET_X = 56;
   useEffect(() => {
     const handleMousemove = (e) => {
-      const newLeftPos = e.clientX;
-      const newTopPos = e.clientY;
+      const newLeftPos = e.clientX - OFFSET_X;
+      const newTopPos = e.clientY - OFFSET_Y;
 
       setLeftPos(newLeftPos);
       setTopPos(newTopPos);
