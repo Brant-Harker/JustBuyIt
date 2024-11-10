@@ -39,9 +39,8 @@ export default function App() {
           width: "100vw",
           position: "absolute",
           backgroundColor: isDarkMode && "black",
-          mask: `radial-gradient(circle closest-side, transparent 96px, black 0)`,
+          mask: `radial-gradient(circle closest-side, transparent 100px, black 0)`,
           maskPosition: `${leftPos}px ${topPos}px`,
-          transform: "-50%, -50%",
           zIndex: 0,
         }}
       />
