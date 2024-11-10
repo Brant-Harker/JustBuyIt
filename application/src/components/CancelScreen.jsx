@@ -3,10 +3,9 @@ import {
   Card,
   CardActions,
   CardContent,
-  Input,
-  InputLabel,
+  Divider,
+  TextField,
   Typography,
-  FormControl,
 } from "@mui/material"
 
 const CancelScreen = () => {
@@ -16,29 +15,51 @@ const CancelScreen = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        backgroundColor: "gray",
+        height: "100%",
       }}
     >
-      <Card variant="outlined" sx={{ maxWidth: 400, padding: 2 }}>
+      <Card
+        variant="outlined"
+        sx={{
+          width: "24rem",
+          height: "26rem",
+          padding: "2rem",
+          marginBottom: "5rem",
+          borderRadius: "1rem",
+        }}
+      >
         <CardContent>
           <Typography
             sx={{
               color: "red",
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: "bold",
-              mb: 1,
+              marginBottom: "1rem",
             }}
           >
             Cancel Order
           </Typography>
-          <Typography sx={{ mb: 2 }}>Ok fine... we get it.</Typography>
-          <FormControl fullWidth>
-            <InputLabel htmlFor="message">Message</InputLabel>
-            <Input id="message" />
-          </FormControl>
+          <Typography sx={{ marginBottom: "1.5rem", fontWeight: "700" }}>
+            Ok fine... we get it.
+          </Typography>
+          <Divider sx={{ marginBottom: "2rem" }} />
+          <Typography>
+            What is your reason for cancelling? (Mandatory)
+          </Typography>
+          <TextField
+            id="outlined-multiline-flexible"
+            label="Share your feedback here..."
+            multiline
+            rows={4}
+            sx={{ width: "100%", marginTop: "1rem" }}
+          />
         </CardContent>
-        <CardActions>
-          <Button color="error" variant="contained" fullWidth>
+        <CardActions sx={{ marginTop: "1rem", justifyContent: "space-around" }}>
+          <Button color="success" variant="contained" size="large">
+            cancel
+          </Button>
+          <Button color="error" variant="contained" size="large">
             Yes, cancel it
           </Button>
         </CardActions>
